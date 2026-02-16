@@ -1,0 +1,31 @@
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+@media (min-width: 768px) {
+    .list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+.list__title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.list__empty {
+    text-align: center;
+    color: #999;
+    padding: 32px;
+}
