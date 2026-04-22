@@ -1,21 +1,23 @@
-import { useFontSize, useShowModal } from '../../app/provider';
+import { useFontSize } from '../../app/provider';
 import styles from './index.module.css';
 
-export const Header = () => {
+type HeaderProps = {
+  onOpenModal: () => void;
+};
+
+export const Header = ({ onOpenModal }: HeaderProps) => {
   const { fontSize, setFontSize } = useFontSize();
-  const { setShowModal } = useShowModal();
 
   return (
     <header className={styles.header}>
-
       <div className={styles.header__controls}>
-        <button 
+        <button
           className={styles.header__button}
-          onClick={() => setShowModal(true)}
+          onClick={onOpenModal}
         >
           Добавить сотрудника
         </button>
-        
+
         <label className={styles.header__label}>
           Шрифт:
           <select

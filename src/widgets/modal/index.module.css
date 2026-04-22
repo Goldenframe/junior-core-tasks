@@ -42,23 +42,20 @@
   z-index: 1;
 }
 
+/* Если раскомментировать этот блок, стиль не применится к .modal__close,
+   потому что селектор по тегу button имеет специфичность 0,0,1,
+   а селектор по классу .modal__close имеет 0,1,0 т.е. выше
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+button {
+    background: red;
 }
+*/
 
-@keyframes slideIn {
-  from {
-    transform: translateY(-80px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
+/* чтобы стиль применились,необходимо использовать селектор с классом.
+   Специфичность 0,1,0 такая же, поэтому стиль переопределит,
+   если написан ниже
+*/
+
+.modal__close:hover {
+  background: rgba(0, 0, 0, 0.1);
 }

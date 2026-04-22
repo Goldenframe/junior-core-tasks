@@ -29,3 +29,32 @@
     color: #999;
     padding: 32px;
 }
+
+.searchContainer {
+    max-width: 1200px;
+    margin: 16px auto 0 auto;
+    padding: 0 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.searchInput {
+    flex: 1;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+}
+
+.searchInput:focus {
+    border-color: #0066cc;
+}
+
+.searchResult {
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
