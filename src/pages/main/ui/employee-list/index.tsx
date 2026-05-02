@@ -1,4 +1,4 @@
-import { useState, useTransition } from 'react';
+import { useState, useDeferredValue } from 'react';
 import { useEmployees } from '../../../../shared/api/queries/employee-query';
 import { EmployeeCard } from '../employee-card';
 import styles from './index.module.css';
@@ -7,7 +7,8 @@ import styles from './index.module.css';
 export const EmployeeList = () => {
     const { data: employees, isLoading, isError } = useEmployees();
     const [searchQuery, setSearchQuery] = useState('');
-    const [isPending, startTransition] = useTransition();
+    const deferredQuery = useDeferredValue(searchQuery);
+    const isPending = searchQuery !== deferredQuery;
     
     if (isLoading) {
         return (
@@ -15,7 +16,7 @@ export const EmployeeList = () => {
                 <p className={styles.list__empty}>Загрузка...</p>
             </div>
         );
-    } 
+    }
     if (isError) {
         return (
             <div className={styles.list}>
@@ -32,17 +33,11 @@ export const EmployeeList = () => {
         );
     }
     const filteredEmployees = employees.filter(employee => {
-        if (searchQuery === '') return true;
-        const query = searchQuery.toLowerCase();
+        if (deferredQuery === '') return true;
+        const query = deferredQuery.toLowerCase();
         return employee.name.toLowerCase().includes(query) ||
                employee.job_title.toLowerCase().includes(query);
     });
-    
-    const handleSearch = (value: string) => {
-        startTransition(() => {
-            setSearchQuery(value);
-        });
-    };
     
     return (
         <>
@@ -51,7 +46,7 @@ export const EmployeeList = () => {
                     type="text"
                     placeholder="Поиск по имени или должности..."
                     value={searchQuery}
-                    onChange={(e) => handleSearch(e.target.value)}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     className={styles.searchInput}
                 />
                 <span className={styles.searchResult}>
@@ -59,6 +54,7 @@ export const EmployeeList = () => {
                     {isPending && <span className={styles.pending}> (поиск...)</span>}
                 </span>
             </div>
+            
             <div className={styles.list}>
                 {filteredEmployees.map((employee) => (
                     <EmployeeCard 

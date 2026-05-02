@@ -58,3 +58,8 @@
     color: #666;
     white-space: nowrap;
 }
+
+.pending {
+    color: #0066cc;
+    font-style: italic;
+}

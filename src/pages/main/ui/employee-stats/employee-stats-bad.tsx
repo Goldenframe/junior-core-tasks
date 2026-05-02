@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useState, useEffect } from 'react';
 import styles from './index.module.css';
 import { useEmployees } from '../../../../shared/api/queries/employee-query';

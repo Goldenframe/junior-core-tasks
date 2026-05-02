@@ -6,6 +6,8 @@ import { Modal } from "../../widgets/modal";
 import { EmployeeList } from "./ui/employee-list";
 import { useModalCounter } from '../../shared/lib/hooks/use-modal-counter';
 import { EmployeeStatsGood } from './ui/employee-stats/employee-stats-good';
+import { createCounter } from '../../shared/lib/utils/create-counter';
+import { UseEffectProblemDemo } from '../../shared/ui/use-effect-problem-demo';
 
 export const MainPage = () => {
     const { showModal, setShowModal } = useShowModal();
@@ -20,6 +22,19 @@ export const MainPage = () => {
         setShowModal(false);
         console.log(`Модалка открывалась ${getCount()} раз`);
     };
+    
+    useEffect(() => {
+        const sayHello = (name: string) => {
+            console.log(`Привет, ${name}!`);
+            return `Привет, ${name}!`;
+        };
+        
+        const countedHello = createCounter(sayHello);
+        
+        countedHello('Нина');
+        countedHello('Нина1');
+        console.log(`Всего вызовов: ${countedHello.getCount()}`);
+    }, []);
     
     useEffect(() => {
         console.log('=== Задание 6: Event Loop ===');
@@ -48,6 +63,7 @@ export const MainPage = () => {
     return (
         <div>
             <Header onOpenModal={handleOpenModal} />
+            <UseEffectProblemDemo />
             <EmployeeStatsGood />
             <EmployeeList />
             <Modal isOpen={showModal} onClose={handleCloseModal}>
