@@ -9,7 +9,30 @@ export const EmployeeList = () => {
     const [searchQuery, setSearchQuery] = useState('');
     const deferredQuery = useDeferredValue(searchQuery);
     const isPending = searchQuery !== deferredQuery;
-    
+    const [selectedEmployeeName, setSelectedEmployeeName] = useState<string | null>(null);
+
+    const handleListClick = (event: React.MouseEvent<HTMLDivElement>) => {
+        const target = event.target as HTMLElement;
+        const card = target.closest('[data-card-id]');
+
+        if (!card) {
+            return;
+        }
+
+        const isDeleteButton = target.closest('.card__delete') || target.closest('button');
+        if (isDeleteButton) {
+            return;
+        }
+
+        const employeeId = card.getAttribute('data-card-id');
+        const employeeName = card.getAttribute('data-card-name');
+
+        if (employeeId && employeeName) {
+            setSelectedEmployeeName(employeeName);
+            setTimeout(() => setSelectedEmployeeName(null), 2000);
+        }
+    };
+
     if (isLoading) {
         return (
             <div className={styles.list}>
@@ -24,7 +47,7 @@ export const EmployeeList = () => {
             </div>
         );
     }
-    
+
     if (!employees || employees.length === 0) {
         return (
             <div className={styles.list}>
@@ -36,11 +59,16 @@ export const EmployeeList = () => {
         if (deferredQuery === '') return true;
         const query = deferredQuery.toLowerCase();
         return employee.name.toLowerCase().includes(query) ||
-               employee.job_title.toLowerCase().includes(query);
+            employee.job_title.toLowerCase().includes(query);
     });
-    
+
     return (
         <>
+            {selectedEmployeeName && (
+                <div className={styles.toast}>
+                    Выбран сотрудник: {selectedEmployeeName}
+                </div>
+            )}
             <div className={styles.searchContainer}>
                 <input
                     type="text"
@@ -54,10 +82,10 @@ export const EmployeeList = () => {
                     {isPending && <span className={styles.pending}> (поиск...)</span>}
                 </span>
             </div>
-            
-            <div className={styles.list}>
+
+            <div className={styles.list} onClick={handleListClick}>
                 {filteredEmployees.map((employee) => (
-                    <EmployeeCard 
+                    <EmployeeCard
                         key={employee.id}
                         employee={employee}
                     />

@@ -1,65 +1,73 @@
 .list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 16px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
 }
 
 @media (min-width: 768px) {
-    .list {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 1024px) {
-    .list {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-.list__title {
-    font-size: 24px;
-    margin-bottom: 16px;
-    text-align: center;
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .list__empty {
-    text-align: center;
-    color: #999;
-    padding: 32px;
+  text-align: center;
+  color: #999;
+  padding: 32px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  z-index: 1000;
+  font-size: 14px;
 }
 
 .searchContainer {
-    max-width: 1200px;
-    margin: 16px auto 0 auto;
-    padding: 0 16px;
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: space-between;
+  max-width: 1200px;
+  margin: 16px auto 0 auto;
+  padding: 0 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .searchInput {
-    flex: 1;
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 14px;
-    outline: none;
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
 }
 
 .searchInput:focus {
-    border-color: #0066cc;
+  border-color: #0066cc;
 }
 
 .searchResult {
-    font-size: 14px;
-    color: #666;
-    white-space: nowrap;
+  font-size: 14px;
+  color: #666;
+  white-space: nowrap;
 }
 
 .pending {
-    color: #0066cc;
-    font-style: italic;
+  color: #0066cc;
+  font-style: italic;
 }

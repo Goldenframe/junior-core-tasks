@@ -1,70 +1,105 @@
 .card {
-    background: white;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 16px;
-    margin: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    
-    display: flex;
-    flex-direction: column;
-    min-width: 0; 
+  container-type: inline-size;
+  container-name: employee-card;
+
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .card__name,
 .card__job,
 .card__phone,
 .card__interests {
-    min-width: 0;
+  min-width: 0;
 }
 
 .card__name {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin: 0 0 8px 0;
-    color: #333;
-    
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 0 8px 0;
+  color: #333;
+  
 
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card__job {
-    font-size: 0.875rem;
-    color: #666;
-    margin: 0 0 4px 0;
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0 0 4px 0;
 }
 
 .card__phone {
-    font-size: 0.875rem;
-    color: #666;
-    margin: 0 0 4px 0;
-    
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-size: 0.875rem;
+  color: #666;
+  margin: 0 0 4px 0;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card__interests {
-    font-size: 0.875rem;
-    color: #888;
-    margin: 8px 0 0 0;
-    font-style: italic;
+  font-size: 0.875rem;
+  color: #888;
+  margin: 8px 0 0 0;
+  font-style: italic;
 }
 
 .card__delete {
-    background: #ff4444;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 4px 8px;
-    margin-top: 8px;
-    cursor: pointer;
-    white-space: nowrap;
-    align-self: flex-start;
+  background: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  align-self: flex-start;
 }
 
 .card__delete:hover {
-    background: #cc0000;
+  background: #cc0000;
+}
+
+@container employee-card (max-width: 250px) {
+  .card__delete {
+    align-self: stretch;
+    width: 100%;
+  }
+}
+
+@container employee-card (min-width: 350px) {
+  .card {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card__name {
+    flex: 1;
+    margin-bottom: 0;
+  }
+
+  .card__job,
+  .card__phone,
+  .card__interests {
+    width: 100%;
+  }
+
+  .card__delete {
+    margin-top: 0;
+    align-self: center;
+  }
 }

@@ -59,3 +59,35 @@ button {
 .modal__close:hover {
   background: rgba(0, 0, 0, 0.1);
 }
+
+@media (max-width: 768px) {
+  .modal__content {
+    max-width: 100vw;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100vh;
+    max-height: 100dvh;
+    border-radius: 0;
+    overflow-y: auto;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

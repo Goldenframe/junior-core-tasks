@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { Employee } from '../../../../shared/api/api';
 import { useDeleteEmployee } from '../../../../shared/api/mutations/delete-employee';
 import styles from './index.module.css';
@@ -6,7 +7,7 @@ type EmployeeCardProps = {
     employee: Employee,
 }
 
-export const EmployeeCard = ({ employee }: EmployeeCardProps) => {
+export const EmployeeCard = memo(({ employee }: EmployeeCardProps) => {
     const deleteEmployee = useDeleteEmployee();
 
     const handleDelete = () => {
@@ -47,4 +48,6 @@ export const EmployeeCard = ({ employee }: EmployeeCardProps) => {
             </button>
         </div>
     );
-};
+});
+
+EmployeeCard.displayName = 'EmployeeCard';
