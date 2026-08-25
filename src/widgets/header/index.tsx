@@ -1,5 +1,5 @@
-import { useFontSize } from '../../app/provider';
-import styles from './index.module.css';
+import { useFontSize } from "../../app/provider";
+import styles from "./index.module.css";
 
 type HeaderProps = {
   onOpenModal: () => void;
@@ -11,10 +11,7 @@ export const Header = ({ onOpenModal }: HeaderProps) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__controls}>
-        <button
-          className={styles.header__button}
-          onClick={onOpenModal}
-        >
+        <button className={styles.header__button} onClick={onOpenModal}>
           Добавить сотрудника
         </button>
 

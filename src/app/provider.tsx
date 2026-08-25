@@ -6,8 +6,8 @@ type FontSizeContextType = {
 };
 
 export const FontSizeContext = createContext<FontSizeContextType>({
-  fontSize: '16px',
-  setFontSize: () => { },
+  fontSize: "16px",
+  setFontSize: () => {},
 });
 
 export const useFontSize = () => useContext(FontSizeContext);
@@ -19,7 +19,7 @@ type ShowModalContextType = {
 
 export const ShowModalContext = createContext<ShowModalContextType>({
   showModal: false,
-  setShowModal: () => { }
+  setShowModal: () => {},
 });
 
 export const useShowModal = () => useContext(ShowModalContext);
