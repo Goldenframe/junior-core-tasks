@@ -14,10 +14,16 @@
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,css}": [
+    "src/**/*.{js,jsx,ts,tsx}": [
       "biome check --write"
     ],
-    "*.{json,css}": [
+    "src/**/*.css": [
+      "biome check --write"
+    ],
+    "*.config.{js,cjs,mjs,ts}": [
+      "biome check --write"
+    ],
+    "package.json": [
       "biome check --write"
     ]
   },
