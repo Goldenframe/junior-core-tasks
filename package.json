@@ -10,13 +10,15 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
-    "format:check": "biome format --check .",
+    "format:check": "biome format .",
     "prepare": "husky"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "biome check --write",
-      "biome format --write"
+    "src/**/*.{js,jsx,ts,tsx,css}": [
+      "biome check --write"
+    ],
+    "*.{json,css}": [
+      "biome check --write"
     ]
   },
   "dependencies": {
